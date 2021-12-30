@@ -1,0 +1,320 @@
+html, body {
+  font-family: Oswald, Hind Siliguri, Noto Sans HK, Nanum Gothic, Abel, Arial, Verdana, sans-serif;
+  height: 100vh;
+  background-color: rgba(0, 10, 23, 0.95);
+  
+  &:before {
+    content: "";
+    // background: url("https://mocah.org/uploads/posts/503176-background-board.jpg");
+    // background: url("/images/bg-2.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    // opacity: 0.45;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+  }
+
+  .timer-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+  }
+  .table-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1200px;
+
+    .poker-table {
+      transform: scale(1.5);
+      width:1000px;
+      height:500px;
+      background-color:#4aad4a;
+      border-radius:115px;
+      position:relative;
+      background-color: #4aad4a;
+      border-radius: 150px;
+      border: 15px solid #3b0d01;
+      background: url("https://media1.thehungryjpeg.com/thumbs2/ori_112089_579a6e6e931d34017bf1b6f82945bfca26dc7a0d_20-dark-wood-background-textures.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      // background-attachment: fixed;
+      // background-size: cover;
+
+      &:before {
+        content: '';
+        border: 7px solid rgba(0, 0, 0, 0.1);
+        display: block;
+        width: 1000px;
+        height: 500px;
+        border-radius: 150px;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+      }
+
+      .card-place {
+        order:5px solid #63c763;
+        height:100px;
+        z-index: 10000;
+        position:absolute;
+        border-radius:10px;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
+        box-sizing:border-box;
+        .card:not(:last-child){
+          margin-right:15px;
+        }
+      }
+    }
+  }
+}
+
+.winner {
+  font-style: italic;
+  font-size: 14px;
+  color: purple;
+  background-color: white;
+}
+
+.name-only {
+  color: black;
+  background-color: white;
+  padding: 1px;
+  border-radius: 5px;
+}
+@keyframes blinking {
+from,
+49.9% {
+  opacity: 0;
+}
+50%,
+to {
+  opacity: 1;
+}
+}
+
+.blinking {
+opacity: 0;
+animation: blinking 2s linear infinite;
+display: inline;
+font-size: 12px;
+line-height: 12px;
+}
+
+.player {
+  position:absolute;
+  &__avatar {
+      width:100px;
+      height:100px;
+      background-color:fuchsia;
+      border-radius:100%;
+      position:relative;
+      box-shadow: 2px 10px 0px rgba(0, 0, 0, .4);
+      z-index:20;
+      &:after{
+          content:'';
+          width:70px;
+          height:70px;
+          position:absolute;
+          background-color:rgba(0, 0, 0, .1);
+          top:48%;
+          left:50%;
+          transform:translatex(-50%) translatey(-50%);
+          border-radius:100%;
+          box-shadow:0px 5px 0px rgba(0, 0, 0, .2)
+      }
+
+      .user-data {
+          // background-color: #4aad4a;
+          // padding: 10px;
+          padding-bottom: 4px;
+          padding-top: 4px;
+          // color:#555D50;
+          width: 2em;
+          position: absolute;
+          left: 33%;
+          z-index: 5;
+      }
+  }
+  .player__avatar-computer {
+      background: rgb(131,58,180);
+      background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  }
+
+  .name {
+      font-family: Verdana;
+      text-align:center;
+      width:100%;
+      font-weight: bold;
+      color:white;
+      // background-color: rgba(0,0,0,0.96);
+      box-sizing:border-box;
+      border-radius:5px;
+      margin-top:15px;
+      text-overflow:ellipsis;
+      font-size:8px;
+      overflow:hidden;
+      position:relative;
+      padding: 3px;
+  }
+  .__leader-image {
+      position: absolute;
+      left: 34%;
+      top: 20%;
+      z-index: 1000;
+  }
+  &.playing:before{
+      content:'...';
+      color:white;
+      font-size:20px;
+      position:absolute;
+      background-color:green;
+      display:inline-block;
+      line-height:0px;
+      height:20px;
+      padding:5px 10px;
+      border-radius:5px;
+      z-index:100;
+  }
+  &.player-2{
+      top:0px;
+      left:50%;
+      transform:translatex(-50%) translatey(-50%);
+  }
+  &.player-1{
+      bottom:0px;
+      left:50%;
+      transform:translatex(-50%) translatey(50%) rotatez(180deg);
+      .name, .user-data{
+          transform:rotatez(180deg);
+      }
+      .bank-value{
+          transform:rotatez(180deg);
+      }
+      .mise-value{
+          transform:rotatez(180deg);
+      }
+  }
+  &.player-3{
+      top:50%;
+      left:0px;
+      transform:translatex(-50%) translatey(-50%) rotatez(0deg);
+      .name, .user-data{
+          transform:rotatez(0deg);
+      }
+  }
+  &.player-4{
+      top:50%;
+      right:0px;
+      transform:translatex(50%) translatey(-50%) rotatez(0deg);
+      .name, .user-data{
+          transform:rotatez(0deg);
+      }
+  }
+  &.player-5{
+      top:0px;
+      left:25%;
+      transform:translatex(-50%) translatey(-50%);
+  }
+  &.player-6{
+      bottom:0px;
+      left:75%;
+      transform:translatex(-50%) translatey(50%) rotatez(180deg);
+      .name, .user-data{
+          transform:rotatez(180deg);
+      }
+      .bank-value{
+          transform:rotatez(180deg);
+      }
+      .mise-value{
+          transform:rotatez(180deg);
+      }
+  }
+  &.player-7{
+      top:0px;
+      left:75%;
+      transform:translatex(-50%) translatey(-50%);
+  }
+  &.player-8{
+      bottom:0px;
+      left:25%;
+      transform:translatex(-50%) translatey(50%) rotatez(180deg);
+      .name, .user-data{
+          transform:rotatez(180deg);
+      }
+      .bank-value{
+          transform:rotatez(180deg);
+      }
+      .mise-value{
+          transform:rotatez(180deg);
+      }
+  }
+}
+
+.card-container {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: -15px;
+  transform: rotate3d(24, 2, 3, 0deg);
+  height: auto;
+
+  &.--stretch {
+    // margin-left: -30px;
+
+    .card0 {
+      width: 3.3em;
+    }
+  }
+
+  .card0 {
+    &.center-card {
+      width: 4.2em;
+    }
+    width: 4.3em;
+    transition: .2s;
+    cursor: pointer;
+    box-shadow: 1px 1.5px rgba(0, 0, 0, .4);
+    border-radius: 7px;
+
+    &:not(.playable) {
+      opacity: 0.2;
+    }
+
+    &.blank {
+      transform: scale(0.88);
+      border-radius: 7px;
+      margin-left: 25px;
+    }
+    &.hidden {
+      transform: scale(0.88);
+      border-radius: 7px;
+    }
+  }
+
+  .jcommandOptionSelect {
+    width: 30px;
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid silver;
+
+    &.bg-light {
+      background-color: white;
+    }
+
+    &.bg-danger {
+      background-color: darkred;
+    }
+  }
+}

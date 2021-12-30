@@ -1,0 +1,53 @@
+@import "./styles.scss";
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Audiowide&family=IBM+Plex+Sans:wght@400;500;600');
+
+html, body {
+  font-family: $family !important;
+  font-weight: 300 !important;
+
+  input, button, textarea {
+    font-family: $family !important;
+    // border: none !important;
+    // font-size: 0.75em !important;
+  }
+
+  label {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  button, .button {
+    text-transform: uppercase !important;
+    font-size: 0.9em;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .center-column {
+    flex-flow: column;
+  }
+
+  .v-align-bottom {
+    vertical-align: text-bottom;
+  }
+
+  hr {
+    height: 0.5px;
+  }
+}
