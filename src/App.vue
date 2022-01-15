@@ -5,6 +5,7 @@
 </template>
 
 <script>
+screen.orientation?.lock('landscape');
 export default {
   name: 'app',
   components: {

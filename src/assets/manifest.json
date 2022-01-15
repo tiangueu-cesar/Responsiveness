@@ -1,0 +1,9 @@
+{
+  "name": "Poker",
+  "theme_color": "#bf00ff",
+  "background_color": "#000a17",
+  "display": "browser",
+  "orientation": "landscape",
+  "scope": "/",
+  "start_url": "/"
+}
